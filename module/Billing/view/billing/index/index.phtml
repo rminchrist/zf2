@@ -1,0 +1,49 @@
+<?php
+// module/billing/view/album/index/index.phtml:
+
+$title = 'Companies';
+$this->headTitle($title);
+?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <?php echo $this->flashMessenger()->render(); 
+     //\Zend\Debug\Debug::dump($users); ?>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>Company Code</th>
+     <th>Company Name</th>
+     <th>Start</th>
+     <th>Billing Period</th>
+     <th>Number of Users</th>
+     <th>Price per user</th>
+     <th>VAT</th>
+     <th>Total</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($companies as $company) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($company->company_code);?></td>
+     <td><?php echo $this->escapeHtml($company->company_name);?></td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>
+	     <?php /* foreach ($users as $user ) {
+	     	echo $user['first_name'] . ' ' . $user['is_active'] . '<br />';
+	     	
+	     } */?>
+     </td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>
+         <a href="<?php echo $this->url('billing',
+             array('action'=>'view', 'cmp_id' => $album->id));?>">View</a>
+         <a href="<?php echo $this->url('billing',
+             array('action'=>'edit', 'cmp_id' => $album->id));?>">Edit</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+
+ </table>
